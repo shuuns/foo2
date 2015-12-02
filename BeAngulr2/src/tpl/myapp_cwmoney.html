@@ -1,8 +1,8 @@
-﻿<div class="bg-light lter b-b wrapper-md">
+<div class="bg-light lter b-b wrapper-md">
     <h1 class="m-n font-thin h3">CWMoney Page</h1>
 </div>
 
-<div ng-controller="DatepickerDemoCtrl" class="m-b-lg">
+<!-- <div ng-controller="DatepickerDemoCtrl" class="m-b-lg">
     <h4>Datepicker</h4>
     <pre class="alert alert-info">Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
     <div class="row">
@@ -19,32 +19,25 @@
             <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
         </div>
     </div>
-</div>
+</div> -->
 
 <div ng-controller="cwmDateCtrl" class="m-b-lg">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <p class="input-group">
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
             </p>
         </div>
-        <div class="col-sm-6">
-            <pre class="alert alert-info"><em>{{dt | date:'fullDate' }}</em></pre>
+        <div class="col-sm-3">
+            <pre><em>{{dt/1000}}</em></pre>
         </div>
-    </div>
-    <ul>
-        <li>fullDate:  <em>{{dt | date:'fullDate' }}</em></li>
-        <li>no format: <em>{{dt}}</em></li>
-        <li>number:    <em>{{dt | number}}</em></li>
-    </ul>
-    <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <input type="text" class="form-control" ng-model="dt2" />
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <pre><em>{{dt2 *1000 | date:'yyyy-MM-dd HH:mm:ss Z' }}</em></pre>
         </div>
     </div>
