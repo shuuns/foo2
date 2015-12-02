@@ -1,3 +1,6 @@
+/// <reference path="../vendor/libs/sql.js" />
+/// <reference path="../vendor/libs/sql.js" />
+/// <reference path="../vendor/libs/sql.js" />
 'use strict';
 
 /**
@@ -53,7 +56,8 @@ angular.module('app')
                   resolve: {
                       deps: ['$ocLazyLoad',
                         function ($ocLazyLoad) {
-                            return $ocLazyLoad.load(['js/controllers/sqlite.js']);
+                            return $ocLazyLoad.load(['js/controllers/sqlite.js',
+                                                     'vendor/libs/sql.js']);
                         }]
                   }
                   //// use resolve to load other dependences
