@@ -79,6 +79,18 @@ angular.module('app')
                   //      }]
                   //}
               })
+              .state('app.cwmoney', {
+                  url: '/cwmoney',
+                  templateUrl: 'tpl/myapp_cwmoney.html',
+                  controller: 'cwmoneyCtrl',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load(['js/controllers/sqlite.js',
+                                                     'vendor/libs/sql.js']);
+                        }]
+                  }
+              })
               //Punto add [end]
               .state('app.ui', {
                   url: '/ui',
