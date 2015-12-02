@@ -48,8 +48,14 @@ angular.module('app')
               .state('app.sqlite', {
                   url: '/sqlite',
                   //templateUrl: 'tpl/form_xeditable.html',
-                  template: '<div ng-controller="sqliteCtrl">hihi here\'s router template</div>',
-                  //controller: 'XeditableCtrl',
+                  //template: '<div ng-controller="sqliteCtrl">hihi here\'s router template</div>',
+                  controller: 'sqliteCtrl',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load(['js/controllers/sqlite.js']);
+                        }]
+                  }
                   //// use resolve to load other dependences
                   //resolve: {
                   //    deps: ['$ocLazyLoad', 'uiLoad',
