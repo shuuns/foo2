@@ -44,6 +44,32 @@ angular.module('app')
                     }]
                   }
               })
+              //Punti add [start]
+              .state('app.sqlite', {
+                  url: '/sqlite',
+                  //templateUrl: 'tpl/form_xeditable.html',
+                  template: '<div ng-controller="sqliteCtrl">hihi here\'s router template</div>',
+                  //controller: 'XeditableCtrl',
+                  //// use resolve to load other dependences
+                  //resolve: {
+                  //    deps: ['$ocLazyLoad', 'uiLoad',
+                  //      function ($ocLazyLoad, uiLoad) {
+                  //          return uiLoad.load(
+                  //            ['vendor/jquery/fullcalendar/fullcalendar.css',
+                  //              'vendor/jquery/fullcalendar/theme.css',
+                  //              'vendor/jquery/jquery-ui-1.10.3.custom.min.js',
+                  //              'vendor/libs/moment.min.js',
+                  //              'vendor/jquery/fullcalendar/fullcalendar.min.js',
+                  //              'js/app/calendar/calendar.js']
+                  //          ).then(
+                  //            function () {
+                  //                return $ocLazyLoad.load('ui.calendar');
+                  //            }
+                  //          )
+                  //      }]
+                  //}
+              })
+              //Punto add [end]
               .state('app.ui', {
                   url: '/ui',
                   template: '<div ui-view class="fade-in-up"></div>'
