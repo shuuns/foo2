@@ -5,12 +5,44 @@
         //console.log(contents);
         $scope.columns = sqlite_master[0].columns;
         $scope.values = sqlite_master[0].values;
+        
+        var str_sql = groupByMonth(2015,11,1);
+        var contents = db.exec(str_sql);
+        console.log(contents);
+        //console.log(new Date(2015,11,1).getTime() / 1000);
     };
     //load db
-    sqliteFactory.getDB('api/2013_05_21_CHT.iDB', getDBcallback);
+    sqliteFactory.getDB('api/2015_12_01_CHT.iDB', getDBcallback);
 });
 
-app.controller('cwmDateCtrl', function ($scope) {
+function cwDate(date){
+	return date/1000;
+};
+
+function sumByMonth (y, m, type){
+	var sql;
+	sql = "select sum(i_money) from rec_table where i_date between " + cwDate(new Date(y, m - 1, 1)) + " and " + cwDate(new Date(y, m, 0)) + " and i_type=" + type + ";"; 
+	return sql;
+};
+
+function groupByMonth (y, m, type){
+	var sql;
+	sql = "select i_kind, sum(i_money) from rec_table where i_date between " + cwDate(new Date(y, m - 1, 1)) + " and " + cwDate(new Date(y, m, 0)) + " and i_type=" + type + " group by i_kind;"; 
+	return sql;
+};
+
+function groupNameByMonth (y, m, type){
+	var sql;
+	
+//	select kindtext, a.i_kind,  i_money from (
+//	  select i_kind, sum(i_money) as i_money from rec_table where i_date between 1446307200 and 1448812800 and i_type=1 group by i_kind order by i_kind) a, kind_table b
+//	where a.i_kind=b._id
+			
+	sql = "select i_kind, sum(i_money) from rec_table where i_date between " + cwDate(new Date(y, m - 1, 1)) + " and " + cwDate(new Date(y, m, 0)) + " and i_type=" + type + " group by i_kind"; 
+	return sql;
+};
+
+app.controller('cwmDateCtrl', function ($scope, $filter) {
     $scope.open = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();
@@ -18,8 +50,9 @@ app.controller('cwmDateCtrl', function ($scope) {
         $scope.opened = true;
     };
 
-    $scope.dt = new Date();
-
+    $scope.dt = $filter('date')(new Date(),'yyyy-MM-dd');
+    $scope.dt2 = null;
+    
 
 });
 
