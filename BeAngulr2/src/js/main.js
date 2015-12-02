@@ -35,7 +35,8 @@ angular.module('app')
           asideFolded: false,
           asideDock: false,
           container: false
-        }
+        },
+        userName: 'Punto'
       }
 
       // save settings to local storage
