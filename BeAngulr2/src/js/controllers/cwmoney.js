@@ -1,10 +1,34 @@
-﻿app.controller('cwmoneyCtrl', function ($scope, sqliteFactory, cwmoneyFactory) {
+﻿app.controller('cwmoneyCtrl', function ($scope, DBA2) {
+
+    $scope.app.settings.asideFolded = true;
+    $scope.app.settings.asideDock = false;
+    $scope.app.settings.asideFixed = true;
+    console.log(DBA2);
+    
+    //console.log(DBA2.getAcc());
+    //console.log(DBA2.getKind());
+
+});
+
+app.controller('cwmoneyCtrl2', function ($scope, d) {
 
     $scope.app.settings.asideFolded = true;
     $scope.app.settings.asideDock = false;
     $scope.app.settings.asideFixed = true;
 
-    console.log('cwmoney #1')
+    //console.log('cwmoney #1')
+    //console.log(cwmoneyService.getAcc());
+    //var db = sqliteService;
+    //var a1 = db.exec(getSqliteMaster());
+    //console.log(a1);
+    var file = 'api/2015_12_01_CHT.iDB';
+    sqliteFactory.query(file, getAcc(), function (result) {
+        console.log(result);
+    });
+
+    sqliteFactory.query(file, getKind(), function (result) {
+        console.log(result);
+    });
 
     getDBcallback = function (db) {
         //var contents = db.exec(groupNameByMonth(2015, 11, 1));
@@ -19,11 +43,14 @@
     sqliteFactory.getDB('api/2015_12_01_CHT.iDB', getDBcallback);
 
     //console.log(cwmoneyFactory.getAcc());
-    var c1 = cwmoneyFactory.getAcc();
-    var c2 = cwmoneyFactory.getKind();
-    debugger;
+    //var c1 = cwmoneyFactory.getAcc();
+    //var c2 = cwmoneyFactory.getKind();
+    //console.log(c1);
+    //console.log(c2);
 
 });
+
+
 
 app.controller('cwmoneyChart', function ($scope) {
     

@@ -1,6 +1,3 @@
-/// <reference path="../vendor/libs/sql.js" />
-/// <reference path="../vendor/libs/sql.js" />
-/// <reference path="../vendor/libs/sql.js" />
 'use strict';
 
 /**
