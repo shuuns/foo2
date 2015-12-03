@@ -1,6 +1,3 @@
-/// <reference path="../vendor/libs/sql.js" />
-/// <reference path="../vendor/libs/sql.js" />
-/// <reference path="../vendor/libs/sql.js" />
 'use strict';
 
 /**
@@ -86,8 +83,19 @@ angular.module('app')
                   resolve: {
                       deps: ['$ocLazyLoad',
                         function ($ocLazyLoad) {
-                            return $ocLazyLoad.load(['js/controllers/sqlite.js',
+                            return $ocLazyLoad.load(['js/services/sqlite.js',
+                                                     'js/controllers/cwmoney.js',
                                                      'vendor/libs/sql.js']);
+                        }]
+                  }
+              })
+              .state('app.cwmoneyChart', {
+                  url: '/cwmoneyChart',
+                  templateUrl: 'tpl/myapp_cwmoneyChart.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load('js/controllers/cwmoney.js');
                         }]
                   }
               })
