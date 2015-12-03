@@ -86,7 +86,8 @@ angular.module('app')
                   resolve: {
                       deps: ['$ocLazyLoad',
                         function ($ocLazyLoad) {
-                            return $ocLazyLoad.load(['js/controllers/sqlite.js',
+                            return $ocLazyLoad.load(['js/services/sqlite.js',
+                                                     'js/controllers/cwmoney.js',
                                                      'vendor/libs/sql.js']);
                         }]
                   }
