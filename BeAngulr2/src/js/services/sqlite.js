@@ -8,9 +8,9 @@ app.factory('cwmoneyFactory', function (sqliteFactory) {
         return db;
     };
 
-    factory.getAcc = function () {
-        getDBcallback.exec(getAcc());
-    };
+    //factory.getAcc = function () {
+    //    getDBcallback.exec(getAcc());
+    //};
 
     factory.getAcc2 = function () {
         console.log('getAcc2');
@@ -19,6 +19,12 @@ app.factory('cwmoneyFactory', function (sqliteFactory) {
     factory.getAcc = function (sql, result) {
         getDBcallback = function (db) {
             result = db.exec(getAcc());
+        };
+    };
+
+    factory.getKind = function (sql, result) {
+        getDBcallback = function (db) {
+            result = db.exec(getKind());
         };
     };
 
@@ -113,6 +119,7 @@ function getAcc() {
     return "select _id, acctext, accrate, accnote, accmoney, accsort, accinit, rev1, rev2, rev3 from acc_table;";
 };
 /* SQL for query cwmoney [End] */
+
 
 //Sampel for load sqlite
 function loadDbSample(file) {

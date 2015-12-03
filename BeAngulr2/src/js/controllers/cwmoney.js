@@ -7,7 +7,8 @@
     console.log('cwmoney #1')
 
     getDBcallback = function (db) {
-        var contents = db.exec(groupNameByMonth(2015, 11, 1));
+        //var contents = db.exec(groupNameByMonth(2015, 11, 1));
+        var contents = db.exec(getSqliteMaster());
         console.log(contents);
         $scope.columns = contents[0].columns;
         $scope.values = contents[0].values;
@@ -18,7 +19,9 @@
     sqliteFactory.getDB('api/2015_12_01_CHT.iDB', getDBcallback);
 
     //console.log(cwmoneyFactory.getAcc());
-    cwmoneyFactory.getAcc();
+    var c1 = cwmoneyFactory.getAcc();
+    var c2 = cwmoneyFactory.getKind();
+    debugger;
 
 });
 
