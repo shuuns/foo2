@@ -91,6 +91,16 @@ angular.module('app')
                         }]
                   }
               })
+              .state('app.cwmoneyChart', {
+                  url: '/cwmoneyChart',
+                  templateUrl: 'tpl/myapp_cwmoneyChart.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load('js/controllers/sqlite.js');
+                        }]
+                  }
+              })
               //Punto add [end]
               .state('app.ui', {
                   url: '/ui',

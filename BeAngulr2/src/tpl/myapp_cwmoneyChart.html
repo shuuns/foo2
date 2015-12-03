@@ -1,0 +1,47 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">CWMoney Chart</h1>
+</div>
+
+
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            sqlite_master
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                    <tr>
+                        <th ng-repeat="col in columns">{{col}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in values">
+                        <td ng-repeat="col in columns">{{row[columns.indexOf(col)]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="cwmoneyChart">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Multiple</div>
+                <div class="panel-body">
+                    <div ui-jq="plot" ui-options="{{d0}},{{barConfig}}" style="height:240px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Donut Pie</div>
+                <div class="panel-body">
+                    <div ui-jq="plot" ui-options="{{d3}},{{pieConfig}}" style="height:240px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
