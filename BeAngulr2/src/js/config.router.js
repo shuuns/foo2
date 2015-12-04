@@ -79,12 +79,12 @@ angular.module('app')
               .state('app.cwmoney', {
                   url: '/cwmoney',
                   templateUrl: 'tpl/myapp_cwmoney.html',
-                  controller: 'cwmoneyCtrl',
+                  controller: 'cwCtrl',
                   resolve: {
                       deps: ['$ocLazyLoad',
                         function ($ocLazyLoad) {
                             return $ocLazyLoad.load(['js/services/sqlite.js',
-                                                     'js/controllers/cwmoney.js',
+                                                     'js/controllers/cwCtrl.js',
                                                      'vendor/libs/sql.js']);
                         }]
                   }
@@ -95,7 +95,7 @@ angular.module('app')
                   resolve: {
                       deps: ['$ocLazyLoad',
                         function ($ocLazyLoad) {
-                            return $ocLazyLoad.load('js/controllers/cwmoney.js');
+                            return $ocLazyLoad.load('js/controllers/cwCtrl.js');
                         }]
                   }
               })

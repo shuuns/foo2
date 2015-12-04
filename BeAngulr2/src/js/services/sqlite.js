@@ -36,15 +36,15 @@ app.factory('cwmoneyFactory', function (sqliteFactory) {
 
 
 app.service('cwQuery', function(){
-	//月加總
+	//total summary by month
 	this.sumByMonth = function(y, m, type) {
 		return "select sum(i_money) from rec_table where i_date between " + cwDate(new Date(y, m - 1, 1)) + " and " + cwDate(new Date(y, m, 0)) + " and i_type=" + type + ";";
 	};
-	//月分類加總
+	//kind summary by month
 	this.groupByMonth = function(y, m, type) {
 	    return "select i_kind, sum(i_money) from rec_table where i_date between " + cwDate(new Date(y, m - 1, 1)) + " and " + cwDate(new Date(y, m, 0)) + " and i_type=" + type + " group by i_kind;";
 	};
-	//月分類加總+名稱(收入)
+	//kind sum JOIN tilte (in)
 	this.groupNameByMonth = function(y, m, type) {
 	    var sql;
 	    type = 1;
@@ -53,13 +53,13 @@ app.service('cwQuery', function(){
 	         ' group by i_kind order by i_kind) A, kind_table B where A.i_kind=B._id';
 	    return sql;
 	};
-	//支出分類
+	//Ex Kind
 	this.getKind = "select _id, kindtext, premoney from kind_table;";
-	//支出子分類
+	//Ex Sub Kind
 	this.getKinds = "select _id, kindid, kindstext, premoney from kinds_table;";
-	//收入分類
+	//in Kind
 	this.getInKind = "select _id, kindtext, premoney from in_kind_table;";
-	//收入子分類
+	//In Sub Kind
 	this.getInKinds = "select _id, kindid, kindstext, premoney from in_kinds_table;";
 	//sqlite_master
 	this.getSqliteMaster = "SELECT `name`, `sql` FROM `sqlite_master` WHERE type='table';";
@@ -72,6 +72,11 @@ app.service('cwQuery', function(){
 app.factory('sqliteFactory', function () {
     var factory = {};
 
+    var file = 'api/2015_12_01_CHT.iDB';
+    //var uInt8Array = new Uint8Array(this.response)
+    //var db = new SQL.Database(file);
+    //factory.db = db;
+
     factory.getDB = function (file, callback) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', file, true);
@@ -82,6 +87,7 @@ app.factory('sqliteFactory', function () {
                 if (xhr.status === 200) {
                     //console.log(xhr.responseText);
                     console.log("200 load file success");
+                    console.log(this.response);
                     var uInt8Array = new Uint8Array(this.response);
                     var db = new SQL.Database(uInt8Array);
                     //callback function
@@ -93,6 +99,19 @@ app.factory('sqliteFactory', function () {
         };
         xhr.send();
     };
+
+    factory.getLocalDB = function (file, callback) {
+        var reader = new FileReader();
+        reader.onloadend = function (evt) {
+            // file is loaded
+            var uInt8Array = new Uint8Array(evt.target.result);
+            var db = new SQL.Database(uInt8Array);
+            //callback function
+            callback(db);
+        };
+        reader.readAsArrayBuffer(file);
+    };
+
 
     return factory;
 });

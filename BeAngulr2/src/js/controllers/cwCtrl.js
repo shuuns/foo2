@@ -1,23 +1,28 @@
-﻿app.controller('cwmoneyCtrl', function ($scope, sqliteFactory, cwQuery) {
+﻿app.controller('cwCtrl', function ($scope, sqliteFactory, cwQuery) {
 
     $scope.app.settings.asideFolded = true;
     $scope.app.settings.asideDock = false;
     $scope.app.settings.asideFixed = true;
-
-    console.log('cwmoney #1')
-    
+        
     //load db
-    sqliteFactory.getDB('api/2015_12_01_CHT.iDB', function (db){
-    	var contents = db.exec (cwQuery.getSqliteMaster);
+    sqliteFactory.getDB('api/2015_12_01_CHT.iDB', function (db) {
+        console.log(db);
+        var contents = db.exec (cwQuery.getSqliteMaster);
         console.log(contents);
         $scope.columns = contents[0].columns;
         $scope.values = contents[0].values;
-    	
     });
+    	
+    //});
     
+    //var sqliteDb = sqliteFactory.db;
+    //if (sqliteDb)
+    //    console.log(sqliteDb);
+    //sqliteDb.exec(cwQuery.getSqliteMaster);
+    //console.log(contents);
 });
 
-app.controller('cwmoneyChart', function ($scope) {
+app.controller('cwChart', function ($scope) {
     
     $scope.d0_1 = [[0, 7], [1, 6.5], [2, 12.5], [3, 7], [4, 9], [5, 6], [6, 11], [7, 6.5], [8, 8], [9, 7]];
 
