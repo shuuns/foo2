@@ -12,7 +12,7 @@ angular.module('app')
 
       // config
       $scope.app = {
-        name: 'Angulr',
+        name: 'AngulrX',
         version: '2.0.0',
         // for chart colors
         color: {
@@ -37,7 +37,7 @@ angular.module('app')
           container: false
         },
         userName: 'Punto'
-      }
+      };
 
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
