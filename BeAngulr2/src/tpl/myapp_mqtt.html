@@ -1,0 +1,94 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">MQTT Page</h1>
+</div>
+
+<div class="wrapper-md" ng-init="app.settings.asideFolded = true;
+    app.settings.asideDock = false;
+    app.settings.asideFixed = true;">
+    <div class="row">
+        <div class="col-sm-6 connected" ui-jq="sortable" ui-options="{items:'.panel', handle:'.panel-heading', connectWith:'.connected'}">
+            <div class="panel panel-info" ng-controller="mqttCtrl1">
+                <div class="panel-heading">
+                    DIV1
+                </div>
+                <div class="list-group bg-white">
+                    <a href class="list-group-item">
+                        <i class="fa fa-fw fa-envelope"></i> Inbox
+                    </a>
+                    <a href class="list-group-item">
+                        <i class="fa fa-fw fa-eye"></i> Profile visits
+                    </a>
+                    <a href class="list-group-item">
+                        <i class="fa fa-fw fa-phone"></i> Call
+                    </a>
+                    <a href class="list-group-item">
+                        <i class="fa fa-fw fa-comments-o"></i> Messages
+                    </a>
+                    <a href class="list-group-item">
+                        <i class="fa fa-fw fa-bookmark"></i> Bookmarks
+                    </a>
+                    <a href class="list-group-item">
+                        <i class="fa fa-fw fa-bell"></i> Notifications
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 connected" ui-jq="sortable" ui-options="{items:'.panel', handle:'.panel-heading', connectWith:'.connected'}">
+            <div class="panel panel-success" ng-controller="mqttCtrl2">
+                <div class="panel-heading">
+                    DIV2
+                </div>
+                <ul class="list-group alt">
+                    <li class="list-group-item">
+                        <div class="media">
+                            <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
+                            <div class="pull-right text-success m-t-sm">
+                                <i class="fa fa-circle"></i>
+                            </div>
+                            <div class="media-body">
+                                <div><a href>Chris Fox</a></div>
+                                <small class="text-muted">about 2 minutes ago</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media">
+                            <span class="pull-left thumb-sm"><img src="img/a2.jpg" alt="..." class="img-circle"></span>
+                            <div class="pull-right text-muted m-t-sm">
+                                <i class="fa fa-circle"></i>
+                            </div>
+                            <div class="media-body">
+                                <div><a href>Amanda Conlan</a></div>
+                                <small class="text-muted">about 2 hours ago</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media">
+                            <span class="pull-left thumb-sm"><img src="img/a3.jpg" alt="..." class="img-circle"></span>
+                            <div class="pull-right text-warning m-t-sm">
+                                <i class="fa fa-circle"></i>
+                            </div>
+                            <div class="media-body">
+                                <div><a href>Dan Doorack</a></div>
+                                <small class="text-muted">3 days ago</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media">
+                            <span class="pull-left thumb-sm"><img src="img/a4.jpg" alt="..." class="img-circle"></span>
+                            <div class="pull-right text-danger m-t-sm">
+                                <i class="fa fa-circle"></i>
+                            </div>
+                            <div class="media-body">
+                                <div><a href>Lauren Taylor</a></div>
+                                <small class="text-muted">about 2 minutes ago</small>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

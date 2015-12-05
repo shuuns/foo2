@@ -44,7 +44,7 @@ angular.module('app')
                     }]
                   }
               })
-              //Punti add [start]
+              //Punto add [start]
               .state('app.sqlite', {
                   url: '/sqlite',
                   //templateUrl: 'tpl/form_xeditable.html',
@@ -96,6 +96,20 @@ angular.module('app')
                       deps: ['$ocLazyLoad',
                         function ($ocLazyLoad) {
                             return $ocLazyLoad.load('js/controllers/cwCtrl.js');
+                        }]
+                  }
+              })
+              .state('app.mqtt', {
+                  url: '/mqtt',
+                  templateUrl: 'tpl/myapp_mqtt.html',
+                  //template: '',
+                  //controller: 'mqttCtrl',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load(['js/services/mqttClient.js',
+                                                     'vendor/libs/mqttws31.js',
+                                                     'js/controllers/mqttCtrl.js']);
                         }]
                   }
               })
